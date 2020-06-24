@@ -1,0 +1,7 @@
+echo "# bankapp-backend" >> README.md
+echo "# bankapp-backend" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/zAhmedAly/bankapp-backend.git
+git push -u origin master
