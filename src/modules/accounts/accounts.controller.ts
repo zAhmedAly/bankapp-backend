@@ -1,9 +1,15 @@
 import { AccountsService } from './accounts.service';
-import { Controller, Post, Body, HttpException, HttpStatus } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 
 @Controller('accounts')
 export class AccountsController {
-  constructor(private accountsService: AccountsService) { }
+  constructor(private accountsService: AccountsService) {}
 
   // @Post('create-account')
   // public async register(@Body() UserId: number): Promise<any> {

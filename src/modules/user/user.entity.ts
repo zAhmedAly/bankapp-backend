@@ -1,6 +1,18 @@
-import { Table, Column, Model, DataType, CreatedAt, UpdatedAt, HasMany } from 'sequelize-typescript';
+import {
+  Table,
+  Column,
+  Model,
+  DataType,
+  CreatedAt,
+  UpdatedAt,
+  HasMany,
+} from 'sequelize-typescript';
 import { TableOptions } from 'sequelize-typescript';
-const tableOptions: TableOptions = { timestamp: true, tableName: 'Users' } as TableOptions;
+import { Accounts } from '../accounts/accounts.entity';
+const tableOptions: TableOptions = {
+  timestamp: true,
+  tableName: 'Users',
+} as TableOptions;
 @Table(tableOptions)
 export class Users extends Model<Users> {
   @Column({
@@ -12,8 +24,8 @@ export class Users extends Model<Users> {
   })
   public id: number;
   @Column({
-      type: DataType.CHAR(200),
-      allowNull: false,
+    type: DataType.CHAR(200),
+    allowNull: false,
   })
   public Username: string;
   @Column({
@@ -28,8 +40,8 @@ export class Users extends Model<Users> {
           next(error);
         }
         next();
-      }
-    }
+      },
+    },
   })
   public Email: string;
   @Column({
@@ -46,4 +58,8 @@ export class Users extends Model<Users> {
   public createdAt: Date;
   @UpdatedAt
   public updatedAt: Date;
+
+  // Add HasMany to connect User and Accounts
+  @HasMany(() => Accounts, 'UserId')
+  public accounts: Accounts[];
 }
